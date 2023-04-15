@@ -91,22 +91,26 @@ nav li:hover {
 }
 
 main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Drei Spalten mit gleicher Breite */
-    grid-gap: 1em; /* Abstand zwischen den Cards */
-  }
-  
-  @media (max-width: 767px) {
-    main {
-      grid-template-columns: repeat(2, 1fr); /* Zwei Spalten mit gleicher Breite bei kleineren Bildschirmen */
-    }
+    display: flex;
+    flex-wrap: wrap; /* Zeilenumbruch erzwingen */
+    justify-content: space-between; /* Abstand zwischen den Cards ausfüllen */
   }
   
   .card {
     background-color: white;
     padding: 1em;
+    margin: 1em 0;
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    flex-basis: calc(33.33% - 1em); /* Breite auf 33.33% setzen und Abstand zwischen den Cards abziehen */
+    max-width: calc(33.33% - 1em); /* Maximale Breite auf 33.33% setzen und Abstand zwischen den Cards abziehen */
+  }
+  
+  @media (max-width: 767px) {
+    .card {
+      flex-basis: calc(50% - 1em); /* Breite auf 50% setzen und Abstand zwischen den Cards abziehen */
+      max-width: calc(50% - 1em); /* Maximale Breite auf 50% setzen und Abstand zwischen den Cards abziehen */
+    }
   }
   
 
