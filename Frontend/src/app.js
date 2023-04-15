@@ -201,7 +201,7 @@ class App {
 
             let page = new PageReservation(this);
             await page.init();
-            this._showPage(page, "reserve");
+            this._showPage(page, "reserv");
         } catch (ex) {
             this.showException(ex);
         }
