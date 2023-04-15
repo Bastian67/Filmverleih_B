@@ -47,7 +47,14 @@ class App {
                 url: "^/editRating/(.*)$",
                 show: matches => this._gotoEditRating(matches[1])
             },
-            // Es müssen noch die Sachen für reservation ergänzt werden
+            {
+                url: "^/newReserv/$",
+                show: () => this._gotoNewReserv()
+            },
+            {
+                url: "^/editReserv(.*)$",
+                show: matches => this._gotoEditReserv(matches[1])
+            },
             {
                 url: ".*",
                 show: () => this._gotoList()
@@ -178,6 +185,37 @@ class App {
             let page = new PageEditRate(this, id);
             await page.init();
             this._showPage(page, "editRate");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+
+    async _gotoNewReserv() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageReservation} = await import("./page-reservation/page-reservation.js");
+
+            let page = new PageReservation(this);
+            await page.init();
+            this._showPage(page, "reserve");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+
+     /* Seite zum Bearbeiten einer Reservierung anzeigen.  Wird vom Single Page
+     * Router aufgerufen.
+     *
+     * @param {Number} id ID der zu bearbeitenden Bewertung
+     */
+    async _gotoEditReserv(id) {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageEditReservation} = await import("./page-reservationEdit/page-reservationEdit.js");
+
+            let page = new PageEditReservation(this, id);
+            await page.init();
+            this._showPage(page, "editReserv");
         } catch (ex) {
             this.showException(ex);
         }
