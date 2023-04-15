@@ -123,7 +123,6 @@ async _saveAndExit() {
             }
         } catch (ex) {
             this._app.showException(ex);
-            return;
         }
 
         // Zurück zur Übersicht
