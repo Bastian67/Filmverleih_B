@@ -190,6 +190,10 @@ class App {
         }
     }
 
+    /**
+     * Seite zum Anlegen einer neuen Reservierung anzeigen.  Wird vom Single Page
+     * Router aufgerufen.
+     */
     async _gotoNewReserv() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
