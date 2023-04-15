@@ -207,7 +207,7 @@ class App {
         }
     }
 
-     /* Seite zum Bearbeiten einer Reservierung anzeigen.  Wird vom Single Page
+     /** Seite zum Bearbeiten einer Reservierung anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      *
      * @param {Number} id ID der zu bearbeitenden Bewertung
