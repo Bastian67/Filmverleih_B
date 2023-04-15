@@ -110,10 +110,6 @@ async _saveAndExit() {
 }
 }
 
-
-
-
-
         // Datensatz speichern
         try {
             if (this._editId) {
