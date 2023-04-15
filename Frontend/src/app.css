@@ -90,32 +90,26 @@ nav li:hover {
     border-bottom-width: 3px;
 }
 
-/* INHALT */
 main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    flex-grow: 1;
-
-    margin-top: 1em;
-}
-
-.card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Drei Spalten mit gleicher Breite */
+    grid-gap: 1em; /* Abstand zwischen den Cards */
+  }
+  
+  @media (max-width: 767px) {
+    main {
+      grid-template-columns: repeat(2, 1fr); /* Zwei Spalten mit gleicher Breite bei kleineren Bildschirmen */
+    }
+  }
+  
+  .card {
     background-color: white;
     padding: 1em;
-    margin: 1em;
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    flex-grow: 1;
-    width: 50%; /* setzt die Breite der Karte auf 50% des flexiblen Containers */
-}
+  }
+  
 
-@media (max-width: 767px) {
-    .card {
-        width: calc(50% - 2em); /* optional: setzt die Breite der Karte auf 50%, wenn sie das Flex-Container nicht ausfüllt */
-    }
-}
 
 
 
