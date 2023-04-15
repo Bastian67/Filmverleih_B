@@ -90,7 +90,7 @@ nav li:hover {
     border-bottom-width: 3px;
 }
 
-main {
+.main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -99,19 +99,27 @@ main {
   .card {
     background-color: white;
     padding: 1em;
-    margin: 1em;
+    margin: 1em 0;
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
-    flex-basis: calc(33.33% - 2em);
-    max-width: calc(33.33% - 2em);
-}
-
-@media (max-width: 767px) {
+    flex-basis: calc(33.33% - 1em); /* Breite auf 33.33% setzen und Abstand zwischen den Cards abziehen */
+    max-width: calc(33.33% - 1em); /* Maximale Breite auf 33.33% setzen und Abstand zwischen den Cards abziehen */
+  }
+  
+  @media (max-width: 767px) {
     .card {
-        flex-basis: calc(50% - 2em);
-        max-width: calc(50% - 2em);
+      flex-basis: calc(50% - 1em); /* Breite auf 50% setzen und Abstand zwischen den Cards abziehen */
+      max-width: calc(50% - 1em); /* Maximale Breite auf 50% setzen und Abstand zwischen den Cards abziehen */
     }
-}
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      flex-basis: calc(100% - 1em); /* Breite auf 100% setzen und Abstand zwischen den Cards abziehen */
+      max-width: calc(100% - 1em); /* Maximale Breite auf 100% setzen und Abstand zwischen den Cards abziehen */
+    }
+  }
+  
 
   
 
