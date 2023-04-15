@@ -1,6 +1,5 @@
 "use strict";
 
-
 import Page from "../page.js";
 import HtmlTemplate from "./page-reservationEdit.html";
 
