@@ -107,7 +107,7 @@ main {
     border-radius: 3px;
     box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
     flex-grow: 1;
-    width: calc(33.33% - 2em); /* optional: setzt die Breite der Karte auf 33,33%, wenn sie das Flex-Container nicht ausfüllt */
+    width: 50%; /* setzt die Breite der Karte auf 50% des flexiblen Containers */
 }
 
 @media (max-width: 767px) {
