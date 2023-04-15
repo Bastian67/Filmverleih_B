@@ -115,3 +115,9 @@ main {
         width: calc(50% - 2em); /* optional: setzt die Breite der Karte auf 50%, wenn sie das Flex-Container nicht ausfüllt */
     }
 }
+
+.my-box {
+    background-color: green;
+}
+
+
