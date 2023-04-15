@@ -92,8 +92,8 @@ nav li:hover {
 
 main {
     display: flex;
-    flex-wrap: wrap; /* Zeilenumbruch erzwingen */
-    justify-content: space-between; /* Abstand zwischen den Cards ausfüllen */
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
   
   .card {
@@ -112,6 +112,13 @@ main {
       max-width: calc(50% - 1em); /* Maximale Breite auf 50% setzen und Abstand zwischen den Cards abziehen */
     }
   }
+
+  
+  
+  
+  
+  
+  
   
 
 
