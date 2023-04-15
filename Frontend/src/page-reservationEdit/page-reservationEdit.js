@@ -86,22 +86,33 @@ export default class PageEditReservation extends Page {
         this._dateInput                     = this._mainElement.querySelector("input.date");
     }
 
-    /**
-     * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
-     * in die Listenübersicht zurück.
-     */
-    async _saveAndExit() {
-        // Eingegebene Werte prüfen
-        this._dataset._id           = this._editId;
-        this._dataset.movieTitle    = this._movieTitleInput.value.trim();
-        this._dataset.reggiseur     = this._reggiseur.value.trim();
-        this._dataset.releaseDate   = this._releaseDateInput.value.trim();
-        this._dataset.playtime      = this._playtimeInput.value.trim();
+   /**
+ * Füllt die Eingabefelder mit den Werten aus dem aktuellen Datensatz.
+ */
+_fillInputs() {
+    this._firstNameInput.value           = this._dataset.firstName || "";
+    this._secondNameInput.value          = this._dataset.secondName || "";
+    this._emailInput.value               = this._dataset.email || "";
+    this._movieTitle_reservInput.value   = this._dataset.movieTitle_reserv || "";
+    this._dateInput.value                = this._dataset.date || "";
+}
 
-        if (!this._dataset.movieTitle) {
-            alert("Geben Sie erst ein Filmtitel ein.");
-            return;
-        }
+/**
+ * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
+ * in die Listenübersicht zurück.
+ */
+async _saveAndExit() {
+    // Eingegebene Werte prüfen
+    this._dataset._id           = this._editId;
+    this._dataset.firstName     = this._firstNameInput.value.trim();
+    this._dataset.secondName    = this._secondNameInput.value.trim();
+    this._dataset.email
+}
+}
+
+
+
+
         // Datensatz speichern
         try {
             if (this._editId) {
