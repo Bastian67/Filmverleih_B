@@ -1,20 +1,10 @@
-/**
- * Stylesheet zur Klasse App: Hauptstylesheet der Anwendung.
- *
- * Hier sollten nur allgemeine Sachen stehen, die das Layout als Ganzes
- * betreffen. Also solche Dinge wie Schriftart, Schriftgrößen oder Farben.
- * Spezifische Angaben zur Listenübersicht oder dem Eingabeformular gehören
- * stattdessen in das jeweilige Stylesheet.
- */
-
-/**** TODO: Stylesheet überarbeiten ****/
-
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 /* ALLGEMEINES */
 html, body {
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 
 html {
@@ -37,20 +27,26 @@ html {
     }
 
     body {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
         max-width: 40em;
         margin: 0 auto;
-        margin-top: 2em;
-        margin-bottom: 2em;
+        padding: 1em;
 
         border: 1px solid #202020;
         box-shadow: 1px 1px 3px rgba(0,0,0, 0.5);
-
     }
 }
 
 /* NAVIGATION */
 nav {
     user-select: none;
+    position: sticky;
+    top: 0;
 
     background-color: #404040;
     color: white;
@@ -93,4 +89,30 @@ nav li:hover {
 
     border: 0px solid rgb(103, 197, 231);
     border-bottom-width: 3px;
+}
+
+/* INHALT */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    flex-grow: 1;
+
+    margin-top: 1em;
+}
+
+.card {
+    background-color: white;
+    padding: 1em;
+    margin: 1em;
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    flex-basis: calc(33.33% - 2em);
+}
+
+@media (max-width: 767px) {
+    .card {
+        flex-basis: calc(50% - 2em);
+    }
 }
