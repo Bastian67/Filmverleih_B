@@ -38,7 +38,7 @@ export default class AddReservation {
     /**
      * Speichern einer neuen Reservierung.
      *
-     * @param {Object} reverv Zu speichernde Reservierugnsdaten
+     * @param {Object} reserv Zu speichernde Reservierugnsdaten
      * @return {Promise} Gespeicherte Reservierungsdaten
      */
     async create(reserv) {
