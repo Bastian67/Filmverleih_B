@@ -113,6 +113,7 @@ async _saveAndExit() {
 
 
 
+
         // Datensatz speichern
         try {
             if (this._editId) {
@@ -127,5 +128,5 @@ async _saveAndExit() {
 
         // Zurück zur Übersicht
         location.hash = "#/reservation";
-    }
-};
+    
+
