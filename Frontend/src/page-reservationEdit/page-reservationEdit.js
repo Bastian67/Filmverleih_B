@@ -106,7 +106,7 @@ async _saveAndExit() {
     this._dataset._id           = this._editId;
     this._dataset.firstName     = this._firstNameInput.value.trim();
     this._dataset.secondName    = this._secondNameInput.value.trim();
-    this._dataset.email
+    this._dataset.email         = this._emailInput.value.trim();
 }
 }
 
