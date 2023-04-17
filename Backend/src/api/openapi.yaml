@@ -282,7 +282,7 @@ paths:
   /rating/{id}:
     get:
       tags:
-      - Adresse
+      - Rating
       summary: Bewertung lesen
       description: Liest eine einzelne Bewertung vom Server.
       operationId: get-rating
@@ -445,7 +445,7 @@ paths:
 
     post:
       tags:
-      - Adresse
+      - Reservation
       summary: Reservierung anlegen
       description: "Neue Reservierung anlegen. Speichert die übergebenen Reservierung in der\
         \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
@@ -470,7 +470,7 @@ paths:
     /reservation/{id}:
     get:
       tags:
-      - Adresse
+      - Reservation
       summary: Reservierung lesen
       description: Liest eine einzelne Reservierung vom Server.
       operationId: get-reservation

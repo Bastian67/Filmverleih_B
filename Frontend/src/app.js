@@ -55,10 +55,10 @@ class App {
                 url: "^/editReserv(.*)$",
                 show: matches => this._gotoEditReserv(matches[1])
             },
-            {
+            /*{
                 url: ".*",
                 show: () => this._gotoList()
-            }
+            }*/
         ]);
 
         // Fenstertitel merken, um später den Name der aktuellen Seite anzuhängen
