@@ -383,7 +383,7 @@ paths:
         "404":
           description: Not Found
 
-    /reservation:
+  /reservation:
     get:
       tags:
       - Reservation
@@ -467,7 +467,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reservation'
-    /reservation/{id}:
+
+  /reservation/{id}:
     get:
       tags:
       - Reservation
@@ -489,6 +490,85 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reservation'
+        "404":
+          description: Not Found
+    put:
+      tags:
+      - Reservierung überschreiben
+      summary: ""
+      description: "Überschreibt eine vorhandene Reservierung auf dem Server. Bis auf die\
+        \ ID können alle Felder geändert werden. Der Versuch, die ID zu ändern, wird\
+        \ vom Server stillschweigend ignoriert."
+      operationId: update-resevation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+        "404":
+          description: Not Found
+    patch:
+      tags:
+      - Einzelne Felder ändern
+      summary: Einzelne Bewertungsfelder ändern
+      description: "Ändert einzelne Felder einer vorhandenen Bewertung. Zulässig sind\
+        \ alle Felder bis auf die ID, da diese nachträglich nicht mehr verändert werden\
+        \ darf."
+      operationId: patch-reservation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Reservation'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reservation'
+        "404":
+          description: Not Found
+    delete:
+      tags:
+      - Adresse
+      summary: Bewertung löschen
+      description: Löscht eine Bewertung auf dem Server.
+      operationId: delete-reservation
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
         "404":
           description: Not Found
 
