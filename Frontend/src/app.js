@@ -8,7 +8,7 @@ import "./app.css";
  * Hauptklasse App: Steuert die gesamte Anwendung
  *
  * Diese Klasse erzeugt den Single Page Router zur Navigation innerhalb
- * der Anwendung und ein Datenbankobjekt zur Verwaltung der Adressliste.
+ * der Anwendung und ein Datenbankobjekt zur Verwaltung der Filmliste.
  * Darüber hinaus beinhaltet sie verschiedene vom Single Page Router
  * aufgerufene Methoden, zum Umschalten der aktiven Seite.
  */
@@ -21,7 +21,6 @@ class App {
         this.backend = new Backend();
 
         // Single Page Router zur Steuerung der sichtbaren Inhalte
-        //// TODO: Routing-Regeln anpassen und ggf. neue Methoden anlegen ////
         this.router = new Router([
             {
                 url: "^/$",
@@ -48,11 +47,15 @@ class App {
                 show: matches => this._gotoEditRating(matches[1])
             },
             {
+                url: "^/reservList/$",
+                show: () => this._gotoReservList()
+            },
+            {
                 url: "^/newReserv/$",
                 show: () => this._gotoNewReserv()
             },
             {
-                url: "^/editReserv(.*)$",
+                url: "^/editReserv/(.*)$",
                 show: matches => this._gotoEditReserv(matches[1])
             },
             /*{
@@ -191,17 +194,33 @@ class App {
     }
 
     /**
-     * Seite zum Anlegen einer neuen Reservierung anzeigen.  Wird vom Single Page
-     * Router aufgerufen.
+     * Übersichtsseite der verschiedenen Reservierungen anzeigen. Wird vom Single Page Router aufgerufen.
      */
-    async _gotoNewReserv() {
+    async _gotoReservList() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageReservation} = await import("./page-reservation/page-reservation.js");
 
             let page = new PageReservation(this);
             await page.init();
-            this._showPage(page, "reserv");
+            this._showPage(page, "reservationList");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+
+    /**
+     * Seite zum Anlegen einer neuen Reservierung anzeigen.  Wird vom Single Page
+     * Router aufgerufen.
+     */
+    async _gotoNewReserv() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageEditReservation} = await import("./page-reservationEdit/page-reservationEdit.js");
+
+            let page = new PageEditReservation(this);
+            await page.init();
+            this._showPage(page, "reservation");
         } catch (ex) {
             this.showException(ex);
         }
@@ -219,7 +238,7 @@ class App {
 
             let page = new PageEditReservation(this, id);
             await page.init();
-            this._showPage(page, "editReserv");
+            this._showPage(page, "editReservation");
         } catch (ex) {
             this.showException(ex);
         }

@@ -4,7 +4,7 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-editRatingList.html";
 
 /**
- * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
+ * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Bewertung
  * zur Verfügung.
  */
 export default class PageEditRate extends Page {

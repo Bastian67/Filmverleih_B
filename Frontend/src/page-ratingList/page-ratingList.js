@@ -76,8 +76,8 @@ export default class PageRatingList extends Page {
     }
 
     /**
-     * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
-     * die Adresse löschen will und löscht diese dann.
+     * Löschen der übergebenen Reservierung. Zeigt einen Popup, ob der Anwender
+     * die Reservierung löschen will und löscht diese dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */

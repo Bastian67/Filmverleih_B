@@ -4,7 +4,7 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-reservationEdit.html";
 
 /**
- * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
+ * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Reservierung
  * zur Verfügung.
  */
 export default class PageEditReservation extends Page {
@@ -86,30 +86,23 @@ export default class PageEditReservation extends Page {
         this._dateInput                     = this._mainElement.querySelector("input.date");
     }
 
-   /**
- * Füllt die Eingabefelder mit den Werten aus dem aktuellen Datensatz.
- */
-_fillInputs() {
-    this._firstNameInput.value           = this._dataset.firstName || "";
-    this._secondNameInput.value          = this._dataset.secondName || "";
-    this._emailInput.value               = this._dataset.email || "";
-    this._movieTitle_reservInput.value   = this._dataset.movieTitle_reserv || "";
-    this._dateInput.value                = this._dataset.date || "";
-}
+    /**
+    * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
+    * in die Listenübersicht zurück.
+    */
+    async _saveAndExit() {
+        // Eingegebene Werte prüfen
+        this._dataset._id           = this._editId;
+        this._dataset.firstName     = this._firstNameInput.value.trim();
+        this._dataset.secondName    = this._secondNameInput.value.trim();
+        this._dataset.email         = this._emailInput.value.trim();
+        this._dataset.movieTitle_reserv = this._movieTitle_reservInput.value.trim();
+        this._dataset.date          = this._dateInput.value.trim();
 
-/**
- * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
- * in die Listenübersicht zurück.
- */
-async _saveAndExit() {
-    // Eingegebene Werte prüfen
-    this._dataset._id           = this._editId;
-    this._dataset.firstName     = this._firstNameInput.value.trim();
-    this._dataset.secondName    = this._secondNameInput.value.trim();
-    this._dataset.email         = this._emailInput.value.trim();
-}
-}
-
+        if (!this._dataset.firstName) {
+            alert("Geben Sie erst ein Namen ein.");
+            return;
+        }
         // Datensatz speichern
         try {
             if (this._editId) {
@@ -122,6 +115,6 @@ async _saveAndExit() {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/reservation";
-    
-
+        location.hash = "#/reservList/";
+    }
+};

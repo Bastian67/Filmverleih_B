@@ -1,10 +1,10 @@
 openapi: 3.0.0
 info:
   title: Filmverleih
-  description: "Die Adressbuch-App nutzt einen simplen REST-Webservices zur Kommunikation\
+  description: "Die Filmverleih-App nutzt einen simplen REST-Webservices zur Kommunikation\
     \ mit dem Backend. Dieser ermöglicht die üblichen CRUD-Operationen zur Suche,\
-    \ Anzeige, Bearbeitung und Löschung von Adressen, wobei jede Adresse aus einem\
-    \ Vornamen, Nachnamen, Telefonnummer und eine E-Mailadresse besteht."
+    \ Anzeige, Bearbeitung und Löschung von Filmen, wobei jeder Film aus einem\
+    \ Filmtitel, Reggiseur, Veröffentlichungsdatum und der Laufzeit besteht."
   contact:
     name: wadDW
     url: dAWDAS
@@ -17,7 +17,7 @@ servers:
 - url: http://localhost:3000
 tags:
 - name: Index
-- name: Adresse
+- name: Film
 - name: Rating
 - name: Reservation
 paths:
@@ -42,7 +42,7 @@ paths:
   /movie:
     get:
       tags:
-      - Adresse
+      - Film
       summary: Film suchen
       description: Suche nach Filme. Gibt eine Liste aller Filme passend zu
         den übergebenen Suchkriterien zurück.
@@ -92,7 +92,7 @@ paths:
                 x-content-type: application/json
     post:
       tags:
-      - Adresse
+      - Film
       summary: Film anlegen
       description: "Neuen Film anlegen. Speichert den übergebenen Film in der\
         \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
@@ -118,7 +118,7 @@ paths:
   /movie/{id}:
     get:
       tags:
-      - Adresse
+      - Film
       summary: Film lesen
       description: Liest einen einzelnen Film vom Server.
       operationId: get-movie
@@ -201,7 +201,7 @@ paths:
           description: Not Found
     delete:
       tags:
-      - Adresse
+      - Film
       summary: Film löschen
       description: Löscht einen Film auf dem Server.
       operationId: delete-movie
@@ -222,7 +222,7 @@ paths:
   /rating:
     get:
       tags:
-      - Adresse
+      - Rating
       summary: Bewertung suchen
       description: Suche nach Bewertung. Gibt eine Liste aller Bewertungen passend zu
         den übergebenen Suchkriterien zurück.
@@ -256,7 +256,7 @@ paths:
                 x-content-type: application/json
     post:
       tags:
-      - Adresse
+      - Rating
       summary: Bewertung anlegen
       description: "Neue Bewertung anlegen. Speichert die übergebenen Bewertung in der\
         \ Datenbank. Der Wert des Feldes \"_id\" wird dabei ignoriert, da in jedem Fall\
@@ -365,7 +365,7 @@ paths:
           description: Not Found
     delete:
       tags:
-      - Adresse
+      - Rating
       summary: Bewertung löschen
       description: Löscht eine Bewertung auf dem Server.
       operationId: delete-rating
@@ -554,7 +554,7 @@ paths:
           description: Not Found
     delete:
       tags:
-      - Adresse
+      - Reservation
       summary: Bewertung löschen
       description: Löscht eine Bewertung auf dem Server.
       operationId: delete-reservation
@@ -627,7 +627,6 @@ components:
           type: string
         playtime:
           type: string
-          pattern: "(.*@.*\\..*)?"
       required:
         - movieTitle
       example:
@@ -649,7 +648,6 @@ components:
           type: string
         rate:
           type: string
-          pattern: "(.*@.*\\..*)?"
       required:
         - movieTitleRate
       example:
@@ -676,7 +674,7 @@ components:
         date:
           type: string
       required:
-        - movieTitle_reserv
+        - firstName
       example:
         _id: "82438fh3w32234d"
         firstName: "Hans"

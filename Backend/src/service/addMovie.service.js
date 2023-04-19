@@ -4,9 +4,9 @@ import DatabaseFactory from "../database.js";
 import {ObjectId} from "mongodb";
 
 /**
- * Geschäftslogik zur Verwaltung von Adressen. Diese Klasse implementiert die
+ * Geschäftslogik zur Verwaltung von Filmen. Diese Klasse implementiert die
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
- * Die Adressen werden der Einfachheit halber in einer MongoDB abgelegt.
+ * Die Filme werden der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class AddMovieService {
     /**
@@ -17,13 +17,13 @@ export default class AddMovieService {
     }
 
     /**
-     * Adressen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
+     * Filme suchen. Unterstützt wird lediglich eine ganz einfache Suche,
      * bei der einzelne Felder auf exakte Übereinstimmung geprüft werden.
      * Zwar unterstützt MongoDB prinzipiell beliebig komplexe Suchanfragen.
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
      *
      * @param {Object} query Optionale Suchparameter
-     * @return {Promise} Liste der gefundenen Adressen
+     * @return {Promise} Liste der gefundenen Filme
      */
     async search(query) {
         let cursor = this._movies.find(query, {
@@ -36,10 +36,10 @@ export default class AddMovieService {
     }
 
     /**
-     * Speichern einer neuen Adresse.
+     * Speichern einer neuen Filme.
      *
-     * @param {Object} movie Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten
+     * @param {Object} movie Zu speichernde Filmdaten
+     * @return {Promise} Gespeicherte Filmdaten
      */
     async create(movie) {
         movie = movie || {};
@@ -56,10 +56,10 @@ export default class AddMovieService {
     }
 
     /**
-     * Auslesen einer vorhandenen Adresse anhand ihrer ID.
+     * Auslesen einer vorhandenen Film anhand ihrer ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID der gesuchten Filme
+     * @return {Promise} Gefundene Filmdaten
      */
     async read(id) {
         let result = await this._movies.findOne({_id: new ObjectId(id)});
@@ -67,12 +67,12 @@ export default class AddMovieService {
     }
 
     /**
-     * Aktualisierung einer Adresse, durch Überschreiben einzelner Felder
-     * oder des gesamten Adressobjekts (ohne die ID).
+     * Aktualisierung eines Filmes, durch Überschreiben einzelner Felder
+     * oder des gesamten Filmobjekts (ohne die ID).
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @param {[type]} address Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten oder undefined
+     * @param {String} id ID der gesuchten Filme
+     * @param {[type]} address Zu speichernde Filmdaten
+     * @return {Promise} Gespeicherte Filmdaten oder undefined
      */
     async update(id, movie) {
         let oldMovie = await this._movies.findOne({_id: new ObjectId(id)});
@@ -92,9 +92,9 @@ export default class AddMovieService {
     }
 
     /**
-     * Löschen einer Adresse anhand ihrer ID.
+     * Löschen eines Films anhand ihrer ID.
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID der gesuchten Filme
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {

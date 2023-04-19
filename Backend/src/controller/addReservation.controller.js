@@ -5,7 +5,7 @@ import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
- * HTTP-Controller-Klasse für Adressbucheinträge. Diese Klasse registriert
+ * HTTP-Controller-Klasse für Reservierungseinträge. Diese Klasse registriert
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
  * Webservice zum Lesen und Schreiben von Adressen.
  */
@@ -20,11 +20,11 @@ export default class AddReservationController {
         this._service = new AddReservation();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Reservierung
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 
-        // Entity: Adresse
+        // Entity: Reservierung
         server.get(prefix + "/:id", wrapHandler(this, this.read));
         server.put(prefix + "/:id", wrapHandler(this, this.update));
         server.patch(prefix + "/:id", wrapHandler(this, this.update));
@@ -51,8 +51,8 @@ export default class AddReservationController {
     }
 
     /**
-     * GET /address
-     * Adressen suchen
+     * GET /reservation
+     * Reservierung suchen
      */
     async search(req, res, next) {
         let result = await this._service.search(req.query);
@@ -62,8 +62,8 @@ export default class AddReservationController {
     }
 
     /**
-     * POST /address
-     * Neue Adresse anlegen
+     * POST /reservation
+     * Neue Reservierung anlegen
      */
     async create(req, res, next) {
         let result = await this._service.create(req.body);
@@ -77,8 +77,8 @@ export default class AddReservationController {
     }
 
     /**
-     * GET /address/:id
-     * Adresse auslesen
+     * GET /reservation/:id
+     * Reservierungen auslesen
      */
     async read(req, res, next) {
         let result = await this._service.read(req.params.id);
@@ -94,9 +94,9 @@ export default class AddReservationController {
     }
 
     /**
-     * PUT /address/:id
-     * PATCH /address/:id
-     * Adresse ändern
+     * PUT /reservation/:id
+     * PATCH /reservation/:id
+     * Reservierungen ändern
      */
     async update(req, res, next) {
         let result = await this._service.update(req.params.id, req.body);
@@ -112,8 +112,8 @@ export default class AddReservationController {
     }
 
     /**
-     * DELETE /address/:id
-     * Adresse löschen
+     * DELETE /reservation/:id
+     * Reservierungen löschen
      */
     async delete(req, res, next) {
         await this._service.delete(req.params.id)

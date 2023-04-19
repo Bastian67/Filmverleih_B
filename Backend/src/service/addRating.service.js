@@ -4,9 +4,9 @@ import DatabaseFactory from "../database.js";
 import {ObjectId} from "mongodb";
 
 /**
- * Geschäftslogik zur Verwaltung von Adressen. Diese Klasse implementiert die
+ * Geschäftslogik zur Verwaltung von Bewertungen. Diese Klasse implementiert die
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
- * Die Adressen werden der Einfachheit halber in einer MongoDB abgelegt.
+ * Die Bewertungen werden der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class AddRatingService {
     /**
@@ -17,13 +17,13 @@ export default class AddRatingService {
     }
 
     /**
-     * Adressen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
+     * Bewertungen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
      * bei der einzelne Felder auf exakte Übereinstimmung geprüft werden.
      * Zwar unterstützt MongoDB prinzipiell beliebig komplexe Suchanfragen.
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
      *
      * @param {Object} query Optionale Suchparameter
-     * @return {Promise} Liste der gefundenen Adressen
+     * @return {Promise} Liste der gefundenen Bewertungen
      */
     async search(query) {
         let cursor = this._ratings.find(query, {
@@ -36,10 +36,10 @@ export default class AddRatingService {
     }
 
     /**
-     * Speichern einer neuen Adresse.
+     * Speichern einer neuen Bewertung.
      *
-     * @param {Object} rating Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten
+     * @param {Object} rating Zu speichernde Bewertungsdaten
+     * @return {Promise} Gespeicherte Bewertungsdaten
      */
     async create(rating) {
         rating = rating || {};
@@ -54,10 +54,10 @@ export default class AddRatingService {
     }
 
     /**
-     * Auslesen einer vorhandenen Adresse anhand ihrer ID.
+     * Auslesen einer vorhandenen Bewertungen anhand ihrer ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID der gesuchten Bewertung
+     * @return {Promise} Gefundene Bewertungsdaten
      */
     async read(id) {
         let result = await this._ratings.findOne({_id: new ObjectId(id)});
@@ -65,12 +65,12 @@ export default class AddRatingService {
     }
 
     /**
-     * Aktualisierung einer Adresse, durch Überschreiben einzelner Felder
-     * oder des gesamten Adressobjekts (ohne die ID).
+     * Aktualisierung einer Bewertung, durch Überschreiben einzelner Felder
+     * oder des gesamten Bewertungsobjekts (ohne die ID).
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @param {[type]} rate Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten oder undefined
+     * @param {String} id ID der gesuchten Bewertung
+     * @param {[type]} rate Zu speichernde Bewertungsdaten
+     * @return {Promise} Gespeicherte Bewertungsdaten oder undefined
      */
     async update(id, rating) {
         let oldRating = await this._ratings.findOne({_id: new ObjectId(id)});
@@ -88,9 +88,9 @@ export default class AddRatingService {
     }
 
     /**
-     * Löschen einer Adresse anhand ihrer ID.
+     * Löschen einer Bewertung anhand ihrer ID.
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID der gesuchten Bewertung
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {

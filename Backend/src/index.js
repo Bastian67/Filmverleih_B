@@ -104,7 +104,7 @@ server.listen(config.port, config.host, function() {
     //// TODO: Konsolenausgabe anpassen (Name des Services usw.) ////
     console.log();
     console.log("=============");
-    console.log("MyApp-Server");
+    console.log("Filmverleih-Server");
     console.log("=============");
     console.log();
     console.log("Ausführung mit folgender Konfiguration:");

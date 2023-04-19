@@ -63,6 +63,7 @@ export default class PageReservation extends Page {
             html = html.replace("$SECONDNAME$", dataset.secondName)
             html = html.replace("$EMAIL$", dataset.email);
             html = html.replace("$MOVIETITLE_RESERV$", dataset.movieTitle_reserv);
+            html = html.replace("$DATE$", dataset.date);
 
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
@@ -78,8 +79,8 @@ export default class PageReservation extends Page {
     }
 
     /**
-     * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
-     * die Adresse löschen will und löscht diese dann.
+     * Löschen der übergebenen Reservierung. Zeigt einen Popup, ob der Anwender
+     * die Reservierung löschen will und löscht diese dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */
